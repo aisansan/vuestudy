@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<div id="div1">
+		<button v-on:click="add(5)">button</button>
+		<button @click="add(9)">button</button>
+		{{a}}
+	</div>
+	
+	<script type="text/javascript">
+		let vm = new Vue({
+			el:'#div1',
+			data:{
+				a:1,
+			},
+			methods:{
+				add(n){
+					this.a += n;
+				}
+			}
+		});
+	</script>
+</body>
+</html>

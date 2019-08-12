@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+</head>
+<body>
+	<div id="div1">
+		name:{{name}} <br>
+		age:{{age}} <br>	
+		birth:{{calcBirth()}}
+	</div>
+	<script type="text/javascript">
+		let vm = new Vue({
+			el:'#div1',
+			data:{
+				name:'blue',
+				age:18
+			},
+			methods:{
+				calcBirth(){
+					return new Date().getFullYear()-this.age;
+				}
+			}
+		});
+	</script>
+</body>
+</html>
