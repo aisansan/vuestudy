@@ -11,26 +11,25 @@ export default new Router({
   routes: [
   {
     path:'/user',
-    name:'user',
-    component:RenderRouterView,
+    component:() => import(/* webpackChunkName: "layout" */ "./views/layouts/UserLayout.vue"),
     children:[
       {
       path:"/user/login",
       name:'login',
-      component: ()=>{
+      component: ()=>
         import(/* webpackChunkName: "user" */ "./views/User/Login.vue")
-      }
+
     },
     {
       path:"/user/register",
       name:'register',
-      component: ()=>{
+      component: ()=>
         import(/* webpackChunkName: "user" */ "./views/User/Register.vue")
-      }
+
     }
     ]
   },
-    
+
 
 
     {

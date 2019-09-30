@@ -1,6 +1,7 @@
 <template>
 	<div>RenderRouterView123
 <router-view></router-view>
+111
 	</div>
 	
 </template>
