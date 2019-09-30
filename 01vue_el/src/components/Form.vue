@@ -9,6 +9,11 @@
 <script>
     export default {
         name: "Form",
+        provide(){
+            return {
+                kForm:this
+            }
+        },
         props:{
             model:{
                 type:Object,

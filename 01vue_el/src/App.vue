@@ -1,56 +1,68 @@
 <template>
   <div id="app">
 
-    <img alt="Vue logo" src="./assets/logo.png">
-    {{model.username}}
-    <br>
-    {{model.password}}
-<!--    <k-input @input="value = arguments[0]" :value="value"></k-input>-->
-<k-form :model="model" :rules="rules">
-  <k-form-item label="用户名" prop="username">
-    <k-input v-model="model.username"></k-input>
-  </k-form-item>
-  <k-form-item label="密码" prop="password">
-    <k-input v-model="model.password"></k-input>
-  </k-form-item>
-</k-form>
+
+      {{value}}
+      <k-form :model="model" :rules="rules" >
+        <k-form-item label="用户名" prop="username">
+          <k-input v-model="model.username"></k-input>
+        </k-form-item>
+        <k-form-item label="密码" prop="password">
+          <k-input v-model="model.password" type="password"></k-input>
+        </k-form-item>
+      </k-form>
+
 
   </div>
 </template>
 
 <script>
-import KInput from './components/Input.vue'
-import KFormItem from './components/FormItem'
-import KForm from './components/Form'
-export default {
-  name: 'app',
-  data(){
-    return {
-      model:{
-        username:'',
-        password:''
-      },
-      rule:{
-
-      },
-      value:''
-    }
-  },
-  components: {
-    KInput,
-    KFormItem,
-    KForm
-  }
-}
+  import KInput from './components/Input.vue';
+  import KFormItem from './components/FormItem.vue';
+  import KForm from './components/Form.vue';
+  export default {
+    name: "app",
+    components: {
+      KInput,
+      KFormItem,
+      KForm
+    },
+    data() {
+      return {
+        value:'',
+        model: { username: "tom", password: "" },
+        rules: {
+          username: [
+            { required: true, message: "请输入用户名" },
+            {min: 6,max:10,message:'请输入6~10的用户名'}
+          ],
+          password: [
+            { required: true, message: "请输入密码" }
+          ],
+        }
+      };
+    },
+    methods: {
+      submitForm(form) {
+        this.$refs[form].validate(valid=>{
+          if (valid) {
+            alert('请求登录!')
+          } else {
+            alert('校验失败！')
+          }
+        })
+      }
+    },
+  };
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app {
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 </style>
